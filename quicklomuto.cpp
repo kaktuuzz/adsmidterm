@@ -1,7 +1,6 @@
-///lomuto algo
-
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 int main() {
@@ -9,26 +8,18 @@ int main() {
     cin >> n;
 
     vector<int> a(n);
-
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-    }
+    for (int &x : a)
+        cin >> x;
 
     int p = a[n - 1];
-    int i = -1;
 
-    for (int j = 0; j < n - 1; j++) {
-        if (a[j] < p) {
-            i++;
-            swap(a[i], a[j]);
-        }
-    }
+    auto it = partition(a.begin(), a.end() - 1,
+                        [p](int x) { return x < p; });
 
-    swap(a[i + 1], a[n - 1]);
+    swap(*it, a[n - 1]);
 
-    for (int j = 0; j < n; j++) {
-        cout << a[j] << " ";
-    }
+    for (int x : a)
+        cout << x << " ";
 
     return 0;
 }

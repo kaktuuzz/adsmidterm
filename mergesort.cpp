@@ -2,6 +2,33 @@
 /// You are given two arrays sorted in non-decreasing order
 /// Print all distinct values that occur in at least one of them
 ///in increasing order
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    vector<int> a(n), b(m), c(n + m);
+
+    for (int &x : a) cin >> x;
+    for (int &x : b) cin >> x;
+
+    merge(a.begin(), a.end(), b.begin(), b.end(), c.begin());
+
+    c.erase(unique(c.begin(), c.end()), c.end());
+
+    for (int x : c)
+        cout << x << " ";
+
+    return 0;
+}
+
+
+/// ==================================================================================================================
+
 
 #include <iostream>
 #include <vector>

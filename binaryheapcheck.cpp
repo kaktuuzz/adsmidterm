@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 int main() {
@@ -9,17 +10,13 @@ int main() {
     cin >> n;
 
     vector<int> a(n);
-
     for (int i = 0; i < n; i++)
         cin >> a[i];
 
-    for (int i = 0; i < n / 2; i++) {
-        if (a[i] > a[2 * i + 1] || (2 * i + 2 < n && a[i] > a[2 * i + 2])) {
-            cout << "NO";
-            return 0;
-        }
-    }
+    if (is_heap(a.begin(), a.end(), greater<int>()))
+        cout << "YES";
+    else
+        cout << "NO";
 
-    cout << "YES";
     return 0;
 }

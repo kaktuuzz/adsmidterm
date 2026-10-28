@@ -1,5 +1,36 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+using namespace std;
+
+struct Student {
+    string name;
+    int grade;
+};
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<Student> a(n);
+
+    for (int i = 0; i < n; i++)
+        cin >> a[i].name >> a[i].grade;
+
+    stable_sort(a.begin(), a.end(), [](Student x, Student y) {
+        return x.grade < y.grade;
+    });
+
+    for (int i = 0; i < n; i++)
+        cout << a[i].name << '\n';
+
+    return 0;
+}
+
+///==================================================================================================
+
+#include <iostream>
+#include <vector>
 using namespace std;
 
 struct Student {

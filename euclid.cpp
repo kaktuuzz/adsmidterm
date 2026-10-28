@@ -5,13 +5,11 @@
 using namespace std;
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
 
     long long a, b;
     if (cin >> a >> b) {
-        long long g = std::gcd(a, b);
-        long long l = std::lcm(a, b);
+        long long g = gcd(a, b);
+        long long l = lcm(a, b);
         
         cout << g << " " << l << "\n";
     }
